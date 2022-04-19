@@ -1,2 +1,3 @@
 To remove the non-empty directory :- rm -rf dirname
 To remove the empty directory :- rm -r dirname , rmdir dirname
+To kill the runing port :- npx kill-port 3000
