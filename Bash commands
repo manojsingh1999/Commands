@@ -1,3 +1,10 @@
 To remove the non-empty directory :- rm -rf dirname
 To remove the empty directory :- rm -r dirname , rmdir dirname
 To kill the runing port :- npx kill-port 3000
+echo "# know" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/manojsingh1999/know.git
+git push -u origin main
