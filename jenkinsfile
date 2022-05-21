@@ -47,3 +47,24 @@ node{
   }
 }
 ----------------***********************************************-----------------------------------*******************************-----------------------
+
+pipeline {
+  environment {
+    registry = "assessment-service/new_perficient_email_service"
+    registryCredential = 'assessment_service_grc Google container Registry Account'
+  }
+  agent any
+  stages {
+      stage('Cloning Git') {
+  steps {
+git branch: 'manoj', credentialsId: 'e3cdad40-bb86-4853-8a8b-ac3de6f5df4d', url: 'https://github.com/manojsingh1999/Google_Meet_event.git'  }
+}
+    stage('Building image') {
+      steps{
+        script {
+          docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+    }
+  }
+}
