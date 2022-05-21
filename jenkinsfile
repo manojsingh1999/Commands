@@ -7,3 +7,43 @@ node{
         
     }
 }
+ 
+ ----------------***********************************************-----------------------------------*******************************-----------------------
+ 
+ pipeline {
+  environment {
+    registry = "assessment-service/pipeline"
+    registryCredential = 'assessment_service_gcr Google Container Registry Account'
+    dockerImage = ''
+  }
+  agent any
+  stages {
+    stage('Cloning Git') {
+      steps {
+        git branch: 'manoj', credentialsId: 'e3cdad40-bb86-4853-8a8b-ac3de6f5df4d', url: 'https://github.com/manojsingh1999/google_meet.git'
+      }
+    }
+    stage('Building image') {
+      steps{
+        script {
+          dockerImage = docker.build registry + ":$BUILD_NUMBER"
+        }
+      }
+    }
+    stage('Deploy Image') {
+      steps{
+        script {
+          docker.withRegistry( 'https://gcr.io', registryCredential ) {
+            dockerImage.push()
+          }
+        }
+      }
+    }
+    stage('Remove Unused docker image') {
+      steps{
+        sh "docker rmi $registry:$BUILD_NUMBER"
+      }
+    }
+  }
+}
+----------------***********************************************-----------------------------------*******************************-----------------------
