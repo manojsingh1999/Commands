@@ -1,0 +1,9 @@
+node{
+    stage("pull the source code"){
+        git branch: 'manoj', credentialsId: 'e3cdad40-bb86-4853-8a8b-ac3de6f5df4d', url: 'https://github.com/manojsingh1999/Google_Meet_event.git'
+    }
+    stage ("build docker file"){
+        sh 'docker image build -t $JOB_NAME:v1.BUILD_ID' .'
+        
+    }
+}
