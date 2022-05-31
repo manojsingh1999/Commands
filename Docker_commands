@@ -1,0 +1,1 @@
+docker sysytem prune -a (to delete all the images)
