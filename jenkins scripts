@@ -1,0 +1,1 @@
+run deploy dev-rcteambuilderui --image=gcr.io/assessment-service/dev-rcteambuilderui --platform=managed --region=us-central1 --port=3000
