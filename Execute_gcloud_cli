@@ -1,2 +1,4 @@
 run deploy dev-rcteambuilderui --image=gcr.io/assessment-service/dev-rcteambuilderui --platform=managed --region=us-central1 --port=3000
 run deploy dev-assesment --image=gcr.io/assessment-service/ dev-assesment --platform=managed --region=asia-south1  --port=8080
+
+gcloud run deploy <SERVICE_NAME> --image gcr.io/<PROJECT>/<TAG> --platform managed
